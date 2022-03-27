@@ -2,7 +2,11 @@ import array
 import streamlit as st
 import numpy as np
 import backend
+from PIL import Image
 
+image = Image.open('logo.png')
+
+st.image(image)
 
 
 #necessary functions
