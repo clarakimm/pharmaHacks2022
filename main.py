@@ -69,8 +69,13 @@ if page == "Patient Data input":
         ldh = float(st.text_input("Lactate dehydrogenase", value = "0", placeholder='0', key=10))
 
 #store user data into an array
-userdata = np.array([hgb, ca, b2m, creat, alb, a_glob, b_glob, y_glob, prorate, ost_les, ldh])
-            
+userdata = np.array([[hgb, ca, b2m, alb, a_glob, b_glob, y_glob, ost_les, ldh], [0,0,0,0,0,0,0,0,0]], np.int32)
+
+#prediction function
+#def predictor (arr):
+
+
+
 if page == "Prediction":
     with st.container():
 
