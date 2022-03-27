@@ -14,8 +14,8 @@ X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.2)
 model = DecisionTreeClassifier()
 model = model.fit(X_train,y_train)
 
-userData = model.predict(X_test)
-userData
+test = model.predict(X_test)
+test
 
-score = accuracy_score(y_test, userData)
-score
+score = accuracy_score(y_test, test)
+
