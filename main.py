@@ -2,13 +2,30 @@ import array
 import streamlit as st
 import numpy as np
 
+#necessary functions
+def myeloma_type (numb):
+    """function that takes output from ML model & provides the corresponding multiple myeloma stage"""
+    if (numb ==0):
+        return "Healthy"
+    elif (numb==1):
+        return "Stage 1"
+    elif (numb ==2):
+        return "Stage 2"
+    elif (numb ==3):
+        return "Stage 3"
+    else:
+        return "ERROR"
+
+#prediction function
+#def predictor (arr):
+
+
+#front-end components
 #create page dropdown
-
-
 page = st.selectbox("", ["welcome", "Patient Data input", "Prediction"])
 
-#page = "Prediction"
 
+#welcome page
 if page == "welcome":
     st.write("Welcome to")
     title = '<p style="text-align: center; font-size:60px;">project_name</p>'
@@ -38,7 +55,7 @@ if page == "welcome":
     subtext2 = '<p style="text-align: center; font-size:15px;">This application should only be used to supplement diagnosis decision making. It cannot and should not be used for official diagnosis purposes</p>'
     st.markdown(subtext2, unsafe_allow_html=True)
     
-
+#initialize input variables first
 hgb = 0
 ca = 0
 b2m = 0
@@ -51,6 +68,7 @@ prorate = 0
 ost_les =0
 ldh = 0   
 
+#Patient Data input page
 if page == "Patient Data input":
     col1, col2 = st.columns(2)
     #Collect patient data & convert inputs into strings
@@ -69,14 +87,13 @@ if page == "Patient Data input":
         ldh = float(st.text_input("Lactate dehydrogenase", value = "0", placeholder='0', key=10))
 
 #store user data into an array
-userdata = np.array([[hgb, ca, b2m, alb, a_glob, b_glob, y_glob, ost_les, ldh], [0,0,0,0,0,0,0,0,0]], np.int32)
-
-#prediction function
-#def predictor (arr):
+userData = np.array([[hgb, ca, b2m, alb, a_glob, b_glob, y_glob, ost_les, ldh], [0,0,0,0,0,0,0,0,0]], np.int32)
 
 
 
+#Prediction Page
 if page == "Prediction":
+    
     with st.container():
 
         col1, col2, col3 = st.columns(3)
