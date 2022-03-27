@@ -1,6 +1,6 @@
+import array
 import streamlit as st
 import numpy as np
-import pandas as pd
 
 #create page dropdown
 
@@ -39,27 +39,37 @@ if page == "welcome":
     st.markdown(subtext2, unsafe_allow_html=True)
     
 
-
-   
+hgb = 0
+ca = 0
+b2m = 0
+creat =0
+alb =0
+a_glob =0
+b_glob =0
+y_glob =0
+prorate = 0
+ost_les =0
+ldh = 0   
 
 if page == "Patient Data input":
     col1, col2 = st.columns(2)
-    #input boxes
+    #Collect patient data & convert inputs into strings
     with col1:
-        hgb = st.text_input("Hemoglobin level", placeholder='0', key=0)
-        ca = st.text_input("Calcium test", placeholder='0', key=1)
-        b2m = st.text_input("β-2 Microglobulin test", placeholder='0', key=2)
-        creat = st.text_input("Creatinine level", placeholder='0', key=3)
-        alb = st.text_input("Albumin", placeholder='0', key=4)
+        hgb = st.text_input("Hemoglobin level", value = "0", placeholder='0', key=0)
+        ca = float(st.text_input("Calcium test",  value = "0", placeholder='0', key=1))
+        b2m = float(st.text_input("β-2 Microglobulin test", value = "0", placeholder='0', key=2))
+        creat = float(st.text_input("Creatinine level", value = "0", placeholder='0', key=3))
+        alb = float(st.text_input("Albumin", value = "0", placeholder='0', key=4))
     with col2:
-        a_glob = st.text_input("α_globulin", placeholder='0', key=5)
-        b_glob = st.text_input("β_globulin", placeholder='0', key=6)
-        y_glob = st.text_input("γ_globulin", placeholder='0', key=7)
-        prorate = st.text_input("Proteins rate", placeholder='0', key=8)
-        ost_les = st.text_input("Osteolytic lesions", placeholder='0', key=9)
-        ldh = st.text_input("Lactate dehydrogenase", placeholder='0', key=10)
+        a_glob = float(st.text_input("α_globulin", value = "0", placeholder='0', key=5))
+        b_glob = float(st.text_input("β_globulin", value = "0", placeholder='0', key=6))
+        y_glob = float(st.text_input("γ_globulin", value = "0", placeholder='0', key=7))
+        prorate = float(st.text_input("Proteins rate", value = "0", placeholder='0', key=8))
+        ost_les = float(st.text_input("Osteolytic lesions", value = "0", placeholder='0', key=9))
+        ldh = float(st.text_input("Lactate dehydrogenase", value = "0", placeholder='0', key=10))
 
-
+#store user data into an array
+userdata = np.array([hgb, ca, b2m, creat, alb, a_glob, b_glob, y_glob, prorate, ost_les, ldh])
             
 if page == "Prediction":
     with st.container():
@@ -68,7 +78,7 @@ if page == "Prediction":
 
         with col1:
             st.header("50%")
-            st.write("similarity to _____ (type of Mulpitle Myeloma)")
+            st.write("Similarity to _____ (type of Mulpitle Myeloma)")
 
         with col2:
             import matplotlib.pyplot as plt
